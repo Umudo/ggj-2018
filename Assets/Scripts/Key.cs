@@ -80,12 +80,16 @@ public class Key : MonoBehaviour
 			}
 		}
 
-		if (this.isOn)
+		if (isOn)
 		{
-			// If not already interacted, shoot the laser
-			if (!_lock.interactState)
+			ShootLaserFromTargetPosition( transform.position, transform.forward, laserMaxLength );
+		}
+		else
+		{
+			// Laser is off, if the interactableObj is open, close.
+			if (_lock.interactState)
 			{
-				ShootLaserFromTargetPosition( transform.position, transform.forward, laserMaxLength );
+				_lock.interactState = false;
 			}
 		}
 	}
@@ -99,15 +103,22 @@ public class Key : MonoBehaviour
 			return;
 		}
 		
-		Ray ray = new Ray( targetPosition, direction );
+		Ray ray = new Ray(targetPosition, direction);
 		RaycastHit raycastHit;
 		Vector3 endPosition = targetPosition + ( length * direction );
  
 		if(Physics.Raycast(ray, out raycastHit, length)) {
 			endPosition = raycastHit.point;
-			if (raycastHit.collider.gameObject == relatedLock)
+			// If interactableObj is not open and the ray hits the lock
+			if (!_lock.interactState && raycastHit.collider.gameObject == relatedLock)
 			{
 				_lock.interactState = true;
+			}
+
+			// Laser is on but we are no longer colliding with the lockObject
+			if (_lock.interactState && raycastHit.collider.gameObject != relatedLock)
+			{
+				_lock.interactState = false;
 			}
 		}
  
