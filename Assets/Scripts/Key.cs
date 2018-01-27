@@ -10,11 +10,11 @@ public class Key : MonoBehaviour
 		set
 		{
 			_isOn = value;
-			laserLineRenderer.enabled = value;
+			_laserLineRenderer.enabled = value;
 		}
 	}
 
-	public LineRenderer laserLineRenderer;
+	private LineRenderer _laserLineRenderer;
 	public float laserWidth = 0.1f;
 	public float laserMaxLength = 5f;
 	
@@ -30,16 +30,11 @@ public class Key : MonoBehaviour
 	{
 		_fpsCamera = Camera.main;
 
-		laserLineRenderer = GetComponent<LineRenderer>();
+		_laserLineRenderer = GetComponent<LineRenderer>();
 		isOn = false;
 		
-		Vector3[] initLaserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
-		laserLineRenderer.SetPositions( initLaserPositions );
-		laserLineRenderer.startColor = Color.red;
-		laserLineRenderer.endColor = Color.red;
-		laserLineRenderer.startWidth = laserWidth;
-		laserLineRenderer.endWidth = laserWidth;
-		laserLineRenderer.enabled = isOn;
+	
+		_laserLineRenderer.enabled = isOn;
 		
 		if (relatedLock != null)
 		{
@@ -82,7 +77,7 @@ public class Key : MonoBehaviour
 
 		if (isOn)
 		{
-			ShootLaserFromTargetPosition( transform.position, -1* transform.forward, laserMaxLength );
+			ShootLaserFromTargetPosition( transform.position, -1*transform.forward, laserMaxLength );
 		}
 		else
 		{
@@ -123,7 +118,7 @@ public class Key : MonoBehaviour
 			}
 		}
  
-		laserLineRenderer.SetPosition( 0, targetPosition );
-		laserLineRenderer.SetPosition( 1, endPosition );
+		_laserLineRenderer.SetPosition( 0, targetPosition );
+		_laserLineRenderer.SetPosition( 1, endPosition );
 	}
 }
