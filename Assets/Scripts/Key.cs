@@ -69,22 +69,20 @@ public class Key : MonoBehaviour
 		Vector3 playerForward = _fpsCamera.transform.forward;
 		Debug.DrawRay(_fpsCamera.transform.position, playerForward * _cameraRayDistance, Color.green);
 
-        int layerMask = 1 << LayerMask.NameToLayer("Key");
+        int layerMask = 1 << LayerMask.NameToLayer("KeyLayer");
         if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance, layerMask))
 		{
-            print(hit.collider.gameObject.name);
-			if (hit.collider.gameObject.name == this.gameObject.name)
+          
+			if (Input.GetKeyDown(KeyCode.E))
 			{
-				if (Input.GetKeyDown(KeyCode.E))
-				{
-					isOn = !isOn;
-				}
+				isOn = !isOn;
 			}
+			
 		}
 
 		if (isOn)
 		{
-			ShootLaserFromTargetPosition( transform.position, transform.forward, laserMaxLength );
+			ShootLaserFromTargetPosition( transform.position, -1* transform.forward, laserMaxLength );
 		}
 		else
 		{
@@ -105,11 +103,12 @@ public class Key : MonoBehaviour
 			return;
 		}
 		
-		Ray ray = new Ray(targetPosition, direction);
+		
 		RaycastHit raycastHit;
 		Vector3 endPosition = targetPosition + ( length * direction );
- 
-		if(Physics.Raycast(ray, out raycastHit, length)) {
+	    Debug.DrawRay(targetPosition, direction * 100, Color.cyan);
+	    int layerMask = 1 << LayerMask.NameToLayer("LockLayer");
+        if (Physics.Raycast(targetPosition, direction, out raycastHit,100, layerMask)) {
 			endPosition = raycastHit.point;
 			// If interactableObj is not open and the ray hits the lock
 			if (!_lock.interactState && raycastHit.collider.gameObject == relatedLock)
