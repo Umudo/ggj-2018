@@ -9,48 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1277704678276126}
+  m_RootGameObject: {fileID: 1187021689670572}
   m_IsPrefabParent: 1
---- !u!1 &1277704678276126
+--- !u!1 &1187021689670572
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4314632513184310}
-  - component: {fileID: 33964419045585136}
-  - component: {fileID: 65524304720089746}
-  - component: {fileID: 23584004988457414}
-  - component: {fileID: 114080880669838870}
-  - component: {fileID: 54583604331177100}
-  - component: {fileID: 114098400203137778}
+  - component: {fileID: 4661280044670744}
+  - component: {fileID: 33775763958718594}
+  - component: {fileID: 65231919919431518}
+  - component: {fileID: 23391960550694832}
+  - component: {fileID: 114296676498752718}
+  - component: {fileID: 54927097388193612}
   m_Layer: 8
-  m_Name: keyTemplete
+  m_Name: c1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4314632513184310
+--- !u!4 &4661280044670744
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.854294, y: 0.047, z: -168.98027}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23584004988457414
+--- !u!23 &23391960550694832
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -79,59 +78,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33964419045585136
+--- !u!33 &33775763958718594
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54583604331177100
+--- !u!54 &54927097388193612
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65524304720089746
+--- !u!65 &65231919919431518
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114080880669838870
+--- !u!114 &114296676498752718
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
+  m_GameObject: {fileID: 1187021689670572}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e986d83278cb424690e39893b9e2caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114098400203137778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1277704678276126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2d974bba8e54243b9599172ea4fbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
