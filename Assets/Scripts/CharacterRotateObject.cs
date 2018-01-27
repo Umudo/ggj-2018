@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Select : MonoBehaviour {
+public class CharacterRotateObject : MonoBehaviour {
     public RaycastHit hit;
 	// Use this for initialization
 	void Start () {
