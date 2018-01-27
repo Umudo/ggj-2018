@@ -19,11 +19,11 @@ public class Door : MonoBehaviour, IInteractable {
 	{
 		if (state)
 		{
-			
+			print("Open door");
 		}
 		else
 		{
-			
+			print("Close Door");
 		}
 	}
 }
