@@ -15,8 +15,7 @@ public class Key : MonoBehaviour
 	}
 
 	private LineRenderer _laserLineRenderer;
-	public float laserWidth = 0.1f;
-	public float laserMaxLength = 5f;
+	public float laserMaxLength = 100f;
 	
 	public GameObject relatedLock;
 
@@ -103,7 +102,7 @@ public class Key : MonoBehaviour
 		Vector3 endPosition = targetPosition + ( length * direction );
 	    Debug.DrawRay(targetPosition, direction * 100, Color.cyan);
 	    int layerMask = 1 << LayerMask.NameToLayer("LockLayer");
-        if (Physics.Raycast(targetPosition, direction, out raycastHit,100, layerMask)) {
+        if (Physics.Raycast(targetPosition, direction, out raycastHit, laserMaxLength, layerMask)) {
 			endPosition = raycastHit.point;
 			// If interactableObj is not open and the ray hits the lock
 			if (!_lock.interactState && raycastHit.collider.gameObject == relatedLock)
