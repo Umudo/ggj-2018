@@ -69,8 +69,10 @@ public class Key : MonoBehaviour
 		Vector3 playerForward = _fpsCamera.transform.forward;
 		Debug.DrawRay(_fpsCamera.transform.position, playerForward * _cameraRayDistance, Color.green);
 
-		if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance))
+        int layerMask = 1 << LayerMask.NameToLayer("Key");
+        if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance, layerMask))
 		{
+            print(hit.collider.gameObject.name);
 			if (hit.collider.gameObject.name == this.gameObject.name)
 			{
 				if (Input.GetKeyDown(KeyCode.E))
