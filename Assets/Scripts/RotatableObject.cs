@@ -18,7 +18,7 @@ public class RotatableObject : MonoBehaviour {
         var toAngle = Quaternion.Euler(transform.eulerAngles + byAngles);
         for (var t = 0f; t < 1; t += Time.deltaTime / inTime)
         {
-            transform.rotation = Quaternion.Lerp(fromAngle, toAngle, Mathf.SmoothStep(0.0f, 1.0f, Mathf.SmoothStep(0.0f, 1.0f, t)));
+            transform.rotation = Quaternion.Lerp(fromAngle, toAngle, Mathf.SmoothStep(0.0f, inTime, Mathf.SmoothStep(0.0f, inTime, t)));
             yield return null;
         }
     }
