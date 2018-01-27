@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
         {
             _keyPressed = true;           
         }
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            _keyPressed = false;
+        }
     }
 
     void FixedUpdate()
