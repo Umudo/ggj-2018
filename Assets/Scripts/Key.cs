@@ -10,13 +10,12 @@ public class Key : MonoBehaviour
 		set
 		{
 			_isOn = value;
-			laserLineRenderer.enabled = value;
+			_laserLineRenderer.enabled = value;
 		}
 	}
 
-	public LineRenderer laserLineRenderer;
-	public float laserWidth = 0.1f;
-	public float laserMaxLength = 5f;
+	private LineRenderer _laserLineRenderer;
+	public float laserMaxLength = 100f;
 	
 	public GameObject relatedLock;
 
@@ -30,16 +29,11 @@ public class Key : MonoBehaviour
 	{
 		_fpsCamera = Camera.main;
 
-		laserLineRenderer = GetComponent<LineRenderer>();
+		_laserLineRenderer = GetComponent<LineRenderer>();
 		isOn = false;
 		
-		Vector3[] initLaserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
-		laserLineRenderer.SetPositions( initLaserPositions );
-		laserLineRenderer.startColor = Color.red;
-		laserLineRenderer.endColor = Color.red;
-		laserLineRenderer.startWidth = laserWidth;
-		laserLineRenderer.endWidth = laserWidth;
-		laserLineRenderer.enabled = isOn;
+	
+		_laserLineRenderer.enabled = isOn;
 		
 		if (relatedLock != null)
 		{
@@ -69,22 +63,20 @@ public class Key : MonoBehaviour
 		Vector3 playerForward = _fpsCamera.transform.forward;
 		Debug.DrawRay(_fpsCamera.transform.position, playerForward * _cameraRayDistance, Color.green);
 
-        int layerMask = 1 << LayerMask.NameToLayer("Key");
+        int layerMask = 1 << LayerMask.NameToLayer("KeyLayer");
         if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance, layerMask))
 		{
-            print(hit.collider.gameObject.name);
-			if (hit.collider.gameObject.name == this.gameObject.name)
+          
+			if (Input.GetKeyDown(KeyCode.E))
 			{
-				if (Input.GetKeyDown(KeyCode.E))
-				{
-					isOn = !isOn;
-				}
+				isOn = !isOn;
 			}
+			
 		}
 
 		if (isOn)
 		{
-			ShootLaserFromTargetPosition( transform.position, transform.forward, laserMaxLength );
+			ShootLaserFromTargetPosition( transform.position, -1*transform.forward, laserMaxLength );
 		}
 		else
 		{
@@ -105,11 +97,12 @@ public class Key : MonoBehaviour
 			return;
 		}
 		
-		Ray ray = new Ray(targetPosition, direction);
+		
 		RaycastHit raycastHit;
 		Vector3 endPosition = targetPosition + ( length * direction );
- 
-		if(Physics.Raycast(ray, out raycastHit, length)) {
+	    Debug.DrawRay(targetPosition, direction * 100, Color.cyan);
+	    int layerMask = 1 << LayerMask.NameToLayer("LockLayer");
+        if (Physics.Raycast(targetPosition, direction, out raycastHit, laserMaxLength, layerMask)) {
 			endPosition = raycastHit.point;
 			// If interactableObj is not open and the ray hits the lock
 			if (!_lock.interactState && raycastHit.collider.gameObject == relatedLock)
@@ -124,7 +117,7 @@ public class Key : MonoBehaviour
 			}
 		}
  
-		laserLineRenderer.SetPosition( 0, targetPosition );
-		laserLineRenderer.SetPosition( 1, endPosition );
+		_laserLineRenderer.SetPosition( 0, targetPosition );
+		_laserLineRenderer.SetPosition( 1, endPosition );
 	}
 }

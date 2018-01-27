@@ -4,7 +4,7 @@ using Assets.Scripts.Interfaces;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable {
-
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +17,11 @@ public class Door : MonoBehaviour, IInteractable {
 
 	public void interact(bool state)
 	{
-		if (state)
-		{
-			print("Open door");
+        gameObject.GetComponent<Animator>().SetTrigger("toggle");
+        if (state)
+		{     
+            print("Open door");
+            
 		}
 		else
 		{
