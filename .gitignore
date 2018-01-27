@@ -99,3 +99,5 @@ sysinfo.txt
 
 
 # End of https://www.gitignore.io/api/unity,intellij+all
+
+*.DS_Store
