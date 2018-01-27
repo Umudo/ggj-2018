@@ -6,11 +6,11 @@ public class Door1Control : MonoBehaviour {
 
 
 
-    private Animator _animator;
+
 
 	// Use this for initialization
 	void Start () {
-        _animator = gameObject.GetComponent<Animator>();
+
         //IsOpen = true
 	}
 	

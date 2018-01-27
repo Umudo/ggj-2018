@@ -28,7 +28,8 @@ public class Lock : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		if (checkInteractableObjectImplementsInterface())
+        interactState = false;
+        if (checkInteractableObjectImplementsInterface())
 		{
 			_interactable = interactableGameObject.GetComponent<IInteractable>();
 		}
@@ -37,7 +38,7 @@ public class Lock : MonoBehaviour
 			print("Interactee Object Does Not Implement IInteractable");
 		}
 		
-		interactState = false;
+		
 	}
 
 	bool checkInteractableObjectImplementsInterface()

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable {
 
+    private bool isCurrentStateOn = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +19,13 @@ public class Door : MonoBehaviour, IInteractable {
 
 	public void interact(bool state)
 	{
-		if (state)
+        gameObject.GetComponent<Animator>().SetTrigger("toggle");
+        if (state)
 		{
-			print("Open door");
+         
+         
+            print("Open door");
+            
 		}
 		else
 		{
