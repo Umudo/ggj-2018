@@ -101,3 +101,7 @@ sysinfo.txt
 # End of https://www.gitignore.io/api/unity,intellij+all
 
 *.DS_Store
+
+# Rider Related?
+Assets/Plugins/
+Assets/Plugins.meta
