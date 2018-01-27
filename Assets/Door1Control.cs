@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevator : MonoBehaviour {
+public class Door1Control : MonoBehaviour {
+
+
 
     private Animator _animator;
 
 	// Use this for initialization
 	void Start () {
-
-        _animator = GetComponent<Animator>();
-
-        //toggle();
+        _animator = gameObject.GetComponent<Animator>();
+        //IsOpen = true
 	}
 	
-    public void toggle()
-    {
-        _animator.SetTrigger("toggle");
-    }
-
 	// Update is called once per frame
 	void Update () {
 		
