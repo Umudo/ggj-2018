@@ -67,7 +67,7 @@ public class Key : MonoBehaviour
         if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance, layerMask))
 		{
           
-			if (Input.GetKeyDown(KeyCode.E))
+			if (Input.GetMouseButtonDown(0))
 			{
 				isOn = !isOn;
 			}
