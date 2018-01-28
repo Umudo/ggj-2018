@@ -22,7 +22,7 @@ public class CollectMe : MonoBehaviour {
                 {
                     Vector3 dropPosition = hit.transform.position;
                     Bounds groundHeight = hit.transform.gameObject.GetComponent<DropPlatform>().getHeight();
-                    dropPosition.y += (groundHeight.size.y + GetComponent<MeshRenderer>().bounds.size.y) / 2 - 0.08f;
+                    dropPosition.y += (groundHeight.size.y + GetComponent<Collider>().bounds.size.y) / 2 - 0.08f;
                     StartCoroutine(AlignMe(changePositionTime));
                     StartCoroutine(MoveToPosition(dropPosition, changePositionTime));
                 }

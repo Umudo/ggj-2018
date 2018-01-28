@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        int layerMask = 1 << LayerMask.NameToLayer("Collectible");
+        int layerMask = 1 << LayerMask.NameToLayer("KeyLayer");
 
         Debug.DrawRay(transform.position, fwd * 2, Color.green);
 
