@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,30 +11,44 @@ public class Key : MonoBehaviour
 		set
 		{
 			_isOn = value;
-			_laserLineRenderer.enabled = value;
+			if (_laserLineRenderer != null)
+			{
+				_laserLineRenderer.enabled = value;
+			}
 		}
 	}
 
-	private LineRenderer _laserLineRenderer;
-	public float laserMaxLength = 100f;
+	public float laserMaxLength = 100000f; // This is dependent on the LaserHolder GameObject.
 	
 	public GameObject relatedLock;
 
+	private LineRenderer _laserLineRenderer;
+	private GameObject _laserHolder;
+	
 	private const int _cameraRayDistance = 2;
 	private Camera _fpsCamera;
+	
 	private bool _isOn;
+	
 	private Lock _lock;
 
 	// Use this for initialization
 	void Start ()
 	{
 		_fpsCamera = Camera.main;
-
-		_laserLineRenderer = GetComponent<LineRenderer>();
 		isOn = false;
-		
-	
-		_laserLineRenderer.enabled = isOn;
+
+		var childTransform = transform.Find("LaserHolder");
+		if (childTransform != null)
+		{
+			_laserHolder = childTransform.gameObject;
+			_laserLineRenderer = _laserHolder.GetComponent<LineRenderer>();
+			_laserLineRenderer.enabled = isOn;
+		}
+		else
+		{
+			throw new ArgumentException("Can not find a child gameObject named LaserHolder in Key object.");
+		}
 		
 		if (relatedLock != null)
 		{
@@ -41,7 +56,7 @@ public class Key : MonoBehaviour
 		}
 		else
 		{
-			print("Related Lock is not set.");
+			throw new ArgumentException("Related Lock is not set.");
 		}
 	}
 	
@@ -55,6 +70,13 @@ public class Key : MonoBehaviour
 		if (relatedLock == null)
 		{
 			print("Related Lock is not set.");
+			
+			return;
+		}
+		
+		if (_laserHolder == null)
+		{
+			print("Can not find a child gameObject named LaserHolder in Key object.");
 			
 			return;
 		}
@@ -76,7 +98,7 @@ public class Key : MonoBehaviour
 
 		if (isOn)
 		{
-			ShootLaserFromTargetPosition( transform.position, -1*transform.forward, laserMaxLength );
+			ShootLaserFromTargetPosition(_laserHolder.transform.position, -1*_laserHolder.transform.forward, laserMaxLength);
 		}
 		else
 		{
@@ -97,6 +119,12 @@ public class Key : MonoBehaviour
 			return;
 		}
 		
+		if (_laserHolder == null)
+		{
+			print("Can not find a child gameObject named LaserHolder in Key object.");
+			
+			return;
+		}
 		
 		RaycastHit raycastHit;
 		Vector3 endPosition = targetPosition + ( length * direction );

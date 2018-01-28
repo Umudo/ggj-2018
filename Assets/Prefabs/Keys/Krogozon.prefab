@@ -28,6 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1938096072356258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4158455559634052}
+  - component: {fileID: 33319064263125432}
+  - component: {fileID: 65691803646926346}
+  - component: {fileID: 23683016577294778}
+  - component: {fileID: 120571218664163026}
+  m_Layer: 0
+  m_Name: LaserHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1986522248483198
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +60,6 @@ GameObject:
   - component: {fileID: 114999038378595792}
   - component: {fileID: 114046608057643040}
   - component: {fileID: 114545514902620038}
-  - component: {fileID: 120429290356877014}
   m_Layer: 9
   m_Name: Krogozon
   m_TagString: Untagged
@@ -60,8 +78,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4265769765451406}
+  - {fileID: 4158455559634052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4158455559634052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938096072356258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0019, y: 0.194, z: -0.7079}
+  m_LocalScale: {x: 0.23474914, y: 0.035429493, z: 0.017313357}
+  m_Children: []
+  m_Father: {fileID: 4052841198283928}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4265769765451406
 Transform:
@@ -76,6 +108,40 @@ Transform:
   m_Father: {fileID: 4052841198283928}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23683016577294778
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938096072356258}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23925818684477770
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -117,6 +183,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196743597160078}
   m_Mesh: {fileID: 4300000, guid: 3d22e0ab6e787504a9956c57cfec597a, type: 3}
+--- !u!33 &33319064263125432
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938096072356258}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54859699524826638
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -144,6 +217,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.69, y: 0.59, z: 1.42}
   m_Center: {x: 0, y: 0.18, z: 0}
+--- !u!65 &65691803646926346
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938096072356258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114046608057643040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a383546e5df4a6396a0051a07a32ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserMaxLength: 100
+  laserMaxLength: 100000
   relatedLock: {fileID: 0}
 --- !u!114 &114999038378595792
 MonoBehaviour:
@@ -179,12 +264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e986d83278cb424690e39893b9e2caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &120429290356877014
+--- !u!120 &120571218664163026
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1986522248483198}
+  m_GameObject: {fileID: 1938096072356258}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -218,7 +303,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -230,7 +315,7 @@ LineRenderer:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
