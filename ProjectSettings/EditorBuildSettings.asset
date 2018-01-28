@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: abc0ccab1130ef148b2c6a28ca499748
+    path: Assets/Scenes/MenuScene.unity
+    guid: f83dff5039d4e394eb066b8680c4ce99
   - enabled: 1
     path: Assets/Scenes/Test/Bugra.unity
     guid: e74cd931a566a0340931ba83ea5fcbfe
+  - enabled: 1
+    path: Assets/Scenes/Test/Bahadir.unity
+    guid: 1a939c101a3e0d54fb024fd050c915fe
   - enabled: 1
     path: Assets/Scenes/Test/Onur.unity
     guid: defc86e5553a37745a87c8bddf378e88
