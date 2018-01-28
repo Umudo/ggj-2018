@@ -116,6 +116,14 @@ public class Key : MonoBehaviour
 				_lock.interactState = false;
 			}
 		}
+        else
+        {
+	        // We don't hit anything and the door is open.
+	        if (_lock.interactState)
+	        {
+		        _lock.interactState = false;
+	        }
+        }
  
 		_laserLineRenderer.SetPosition( 0, targetPosition );
 		_laserLineRenderer.SetPosition( 1, endPosition );
