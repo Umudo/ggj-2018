@@ -11,10 +11,10 @@ public class Key : MonoBehaviour
         set
         {
             _isOn = value;
-            if (_laserLineRenderer != null)
+           /* if (_laserLineRenderer != null)
             {
                 _laserLineRenderer.enabled = value;
-            }
+            }*/
         }
     }
 
@@ -38,7 +38,7 @@ public class Key : MonoBehaviour
         _fpsCamera = Camera.main;
         isOn = false;
 
-        var childTransform = transform.Find("LaserHolder");
+      /*  var childTransform = transform.Find("LaserHolder");
         if (childTransform != null)
         {
             _laserHolder = childTransform.gameObject;
@@ -48,7 +48,7 @@ public class Key : MonoBehaviour
         else
         {
             throw new ArgumentException("Can not find a child gameObject named LaserHolder in Key object.");
-        }
+        }*/
 
         if (relatedLock != null)
         {
@@ -75,12 +75,12 @@ public class Key : MonoBehaviour
             return;
         }
 
-        if (_laserHolder == null)
+      /*  if (_laserHolder == null)
         {
             print("Can not find a child gameObject named LaserHolder in Key object.");
 
             return;
-        }
+        }*/
 
         RaycastHit hit;
         Vector3 playerForward = _fpsCamera.transform.forward;
@@ -97,7 +97,7 @@ public class Key : MonoBehaviour
 
         if (isOn)
         {
-            ShootLaserFromTargetPosition(_laserHolder.transform.position, -1 * _laserHolder.transform.forward,
+            ShootLaserFromTargetPosition(transform.position, transform.forward,
                 laserMaxLength);
         }
         else
@@ -119,12 +119,12 @@ public class Key : MonoBehaviour
             return;
         }
 
-        if (_laserHolder == null)
+    /*    if (_laserHolder == null)
         {
             print("Can not find a child gameObject named LaserHolder in Key object.");
 
             return;
-        }
+        }*/
 
         RaycastHit raycastHit;
         Vector3 endPosition = targetPosition + (length * direction);
@@ -153,8 +153,8 @@ public class Key : MonoBehaviour
                 _lock.interactState = false;
             }
         }
-
+/*
         _laserLineRenderer.SetPosition(0, targetPosition);
-        _laserLineRenderer.SetPosition(1, endPosition);
+        _laserLineRenderer.SetPosition(1, endPosition);*/
     }
 }
