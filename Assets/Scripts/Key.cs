@@ -28,7 +28,7 @@ public class Key : MonoBehaviour
         }
     }
 
-    public Transform targetPlatform;
+    private Transform targetPlatform;
     private GameObject targetGameObject;
 
     public float laserMaxLength = 100000f; // This is dependent on the LaserHolder GameObject.
