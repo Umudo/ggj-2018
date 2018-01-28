@@ -105,3 +105,6 @@ sysinfo.txt
 # Rider Related?
 Assets/Plugins/
 Assets/Plugins.meta
+/test_Data/
+*.dll
+*.exe
