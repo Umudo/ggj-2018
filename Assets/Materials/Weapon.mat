@@ -6,9 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Yologran
-  m_Shader: {fileID: 4800000, guid: 54801e211c61e07409e5f0253345511b, type: 3}
-  m_ShaderKeywords: DISTORTION_ON NOISE_OFF RIM_ON SCANLINES_OFF
+  m_Name: Weapon
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: DISTORTION_ON NOISE_OFF RIM_ON SCANLINES_OFF _METALLICGLOSSMAP
+    _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9fc9836b8f14e7143bfbacd24d5065bf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -43,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: deceabb0c8e2cc943a734db3f6989a34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 732dc7f180bf2e44aae4a1d9f5851680, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -70,17 +71,17 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimStrength: 1.68
+    - _RimStrength: 0
     - _ScanLineDistance: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: 1.88
+    - _Strength: 0.01
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.5034485, b: 1, a: 1}
-    - _DistortionSettings: {r: 1.49, g: 0, b: 2.56, a: 2.4}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DistortionSettings: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseColor: {r: 1, g: 1, b: 1, a: 1}
     - _NoiseFrequency: {r: 0, g: 0, b: 0, a: 0}

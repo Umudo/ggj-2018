@@ -1,16 +1,30 @@
 fileFormatVersion: 2
-guid: b1f5524684e5d4e43a5087febdd94aeb
-timeCreated: 1517113014
+guid: 15cbfd4959578f84299d00c7e47de431
+timeCreated: 1517120277
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Kadow
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cylinder
+    100000: anten
+    100002: Camera
+    100004: Lamp
+    100006: verici
+    100008: //RootNode
+    400000: anten
+    400002: Camera
+    400004: Lamp
+    400006: verici
+    400008: //RootNode
+    2000000: Camera
+    2100000: anten
+    2100002: verici
+    2300000: anten
+    2300002: verici
+    3300000: anten
+    3300002: verici
+    4300000: anten
+    4300002: verici
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
