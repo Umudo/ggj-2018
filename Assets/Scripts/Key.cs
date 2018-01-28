@@ -11,12 +11,25 @@ public class Key : MonoBehaviour
         set
         {
             _isOn = value;
-            if (_laserLineRenderer != null)
+            /* if (_laserLineRenderer != null)
+             {
+                 _laserLineRenderer.enabled = value;
+             }*/
+            if (_isOn)
             {
-                _laserLineRenderer.enabled = value;
+                print("should fire");
+                _laserController.StartFire(targetPlatform);
+            }
+            else
+            {
+                print("should stop fire");
+                _laserController.StopFire();
             }
         }
     }
+
+    public Transform targetPlatform;
+    private GameObject targetGameObject;
 
     public float laserMaxLength = 100000f; // This is dependent on the LaserHolder GameObject.
 
@@ -32,13 +45,17 @@ public class Key : MonoBehaviour
 
     private Lock _lock;
 
+    private LaserController _laserController;
+
     // Use this for initialization
     void Start()
     {
+        targetGameObject = new GameObject();
+        _laserController = GetComponent<LaserController>();
         _fpsCamera = Camera.main;
         isOn = false;
 
-        var childTransform = transform.Find("LaserHolder");
+      /*  var childTransform = transform.Find("LaserHolder");
         if (childTransform != null)
         {
             _laserHolder = childTransform.gameObject;
@@ -48,7 +65,7 @@ public class Key : MonoBehaviour
         else
         {
             throw new ArgumentException("Can not find a child gameObject named LaserHolder in Key object.");
-        }
+        }*/
 
         if (relatedLock != null)
         {
@@ -64,6 +81,14 @@ public class Key : MonoBehaviour
     void Update()
     {
         castRayFromCamera();
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward* 1000, Color.red);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1000))
+        {
+
+            targetGameObject.transform.position = new Vector3(hit.point.x,hit.point.y,hit.point.z);
+            targetPlatform = targetGameObject.transform;
+        }
     }
 
     void castRayFromCamera()
@@ -75,12 +100,12 @@ public class Key : MonoBehaviour
             return;
         }
 
-        if (_laserHolder == null)
+      /*  if (_laserHolder == null)
         {
             print("Can not find a child gameObject named LaserHolder in Key object.");
 
             return;
-        }
+        }*/
 
         RaycastHit hit;
         Vector3 playerForward = _fpsCamera.transform.forward;
@@ -89,6 +114,7 @@ public class Key : MonoBehaviour
         int layerMask = 1 << LayerMask.NameToLayer("KeyLayer");
         if (Physics.Raycast(_fpsCamera.transform.position, playerForward, out hit, _cameraRayDistance, layerMask))
         {
+           
             if (Input.GetMouseButtonDown(0))
             {
                 isOn = !isOn;
@@ -97,7 +123,7 @@ public class Key : MonoBehaviour
 
         if (isOn)
         {
-            ShootLaserFromTargetPosition(_laserHolder.transform.position, -1 * _laserHolder.transform.forward,
+            ShootLaserFromTargetPosition(transform.position, transform.forward,
                 laserMaxLength);
         }
         else
@@ -119,12 +145,12 @@ public class Key : MonoBehaviour
             return;
         }
 
-        if (_laserHolder == null)
+    /*    if (_laserHolder == null)
         {
             print("Can not find a child gameObject named LaserHolder in Key object.");
 
             return;
-        }
+        }*/
 
         RaycastHit raycastHit;
         Vector3 endPosition = targetPosition + (length * direction);
@@ -132,6 +158,7 @@ public class Key : MonoBehaviour
         int layerMask = 1 << LayerMask.NameToLayer("LockLayer");
         if (Physics.Raycast(targetPosition, direction, out raycastHit, laserMaxLength, layerMask))
         {
+           
             endPosition = raycastHit.point;
             // If interactableObj is not open and the ray hits the lock
             if (!_lock.interactState && raycastHit.collider.gameObject == relatedLock)
@@ -153,8 +180,8 @@ public class Key : MonoBehaviour
                 _lock.interactState = false;
             }
         }
-
+/*
         _laserLineRenderer.SetPosition(0, targetPosition);
-        _laserLineRenderer.SetPosition(1, endPosition);
+        _laserLineRenderer.SetPosition(1, endPosition);*/
     }
 }
