@@ -3,18 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectMe : MonoBehaviour {
-
+public class CollectMe : MonoBehaviour
+{
     RaycastHit hit;
     Transform start;
     Transform end;
     float changePositionTime = 1;
     Rigidbody rb;
-    void Start () {
-		
-	}
-	
-	void Update () {
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
             if (hit.transform.gameObject.GetComponent<DropPlatform>() != null)
             {
@@ -27,8 +29,7 @@ public class CollectMe : MonoBehaviour {
                     StartCoroutine(MoveToPosition(dropPosition, changePositionTime));
                 }
             }
-        
-}
+    }
 
     public void Attach(Transform parent)
     {
@@ -41,12 +42,13 @@ public class CollectMe : MonoBehaviour {
         var toAngle = Quaternion.Euler(Vector3.zero);
         for (var t = 0f; t < 1; t += Time.deltaTime / inTime)
         {
-            transform.rotation = Quaternion.Lerp(fromAngle,toAngle, Mathf.SmoothStep(0.0f, inTime, Mathf.SmoothStep(0.0f, inTime, t)));
+            transform.rotation = Quaternion.Lerp(fromAngle, toAngle,
+                Mathf.SmoothStep(0.0f, inTime, Mathf.SmoothStep(0.0f, inTime, t)));
             yield return null;
         }
     }
 
-    public IEnumerator MoveToPosition( Vector3 position, float timeToMove)
+    public IEnumerator MoveToPosition(Vector3 position, float timeToMove)
     {
         var currentPos = transform.position;
         var t = 0f;
@@ -57,5 +59,4 @@ public class CollectMe : MonoBehaviour {
             yield return null;
         }
     }
-
 }
