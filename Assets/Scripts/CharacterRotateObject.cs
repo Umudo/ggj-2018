@@ -12,7 +12,7 @@ public class CharacterRotateObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        if(Physics.Raycast(ray,out hit, 10) && hit.distance <= 2){
+        if(Physics.Raycast(ray,out hit, 1000) && hit.distance <= 2000){
             if (hit.transform.gameObject.GetComponent<RotatableObject>() != null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
