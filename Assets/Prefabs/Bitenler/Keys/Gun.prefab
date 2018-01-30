@@ -404,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a383546e5df4a6396a0051a07a32ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlatform: {fileID: 0}
   laserMaxLength: 100000
   relatedLock: {fileID: 0}
 --- !u!114 &114328339400800564
