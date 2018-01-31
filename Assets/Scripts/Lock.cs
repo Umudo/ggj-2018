@@ -1,54 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Interfaces;
+﻿using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-public class Lock : MonoBehaviour
+namespace Assets.Scripts
 {
+    public class Lock : MonoBehaviour
+    {
+        public GameObject Interactable;
+        private IInteractable _interactable;
 
-	public GameObject interactableGameObject;
+        void Start()
+        {
+            _interactable = Interactable.GetComponent<IInteractable>();
+            if (_interactable == null)
+            {
+                print("Interactable object does not implement IInteractable interface");
+            }
+        }
+        public void Opened(GameObject o)
+        {
+            _interactable.interact(true);
+        }
 
-	public bool interactState
-	{
-		get { return _interactState;}
-		set
-		{
-			_interactState = value;
-			if (_interactable != null)
-			{
-				_interactable.interact(value);
-			}
-		}
-	}
-
-	private bool _interactState;
-
-	private IInteractable _interactable;
-
-	// Use this for initialization
-	void Start ()
-	{
-        interactState = false;
-        if (checkInteractableObjectImplementsInterface())
-		{
-			_interactable = interactableGameObject.GetComponent<IInteractable>();
-		}
-		else
-		{
-			print("Interactee Object Does Not Implement IInteractable");
-		}
-		
-		
-	}
-
-	bool checkInteractableObjectImplementsInterface()
-	{
-		var interacter = interactableGameObject.GetComponent<IInteractable>();
-		return interacter != null;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public void Closed(GameObject p0)
+        {
+            _interactable.interact(false);
+        }
+    }
 }

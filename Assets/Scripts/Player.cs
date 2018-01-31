@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     public float raycastDistance;
     public GameObject grabbedObject;
     private bool _keyPressed;
+    private bool _mouseClicked;
 
     // Use this for initialization
     void Start()
@@ -21,12 +23,17 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            _keyPressed = true;           
+            _keyPressed = true;
         }
 
         if (Input.GetKeyUp(KeyCode.F))
         {
             _keyPressed = false;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _mouseClicked = !_mouseClicked;
         }
     }
 
@@ -50,6 +57,25 @@ public class Player : MonoBehaviour
             grabbedObject = null;
             _keyPressed = false;
         }
+
+        if (_mouseClicked)
+        {
+            _mouseClicked = false;
+            Key foundKey = FindKey();
+            foundKey.Toogle();
+        }
+    }
+
+    Key FindKey()
+    {
+        RaycastHit hit;
+        int layerMask = 1 << LayerMask.NameToLayer("KeyLayer");
+        if (Physics.Raycast(Camera.main.transform.position, transform.TransformDirection(Vector3.forward), out hit, 2,
+            layerMask))
+        {
+            return hit.collider.gameObject.GetComponent<Key>();
+        }
+        else return null;
     }
 
     private void CastRay()
@@ -69,10 +95,5 @@ public class Player : MonoBehaviour
                 c.Attach(transform);
             }
         }
-    }
-
-    public void setGrabbedObjectKinematic(bool kinematic)
-    {
-        
     }
 }
